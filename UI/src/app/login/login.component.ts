@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-// import { log } from 'console';
-import { NgForm } from '@angular/forms';
+import { UserService } from '../user.service';
+import { Route, Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-login',
@@ -9,15 +11,30 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userserice:UserService) { }
 
   ngOnInit(): void {
   }
 
-
   login(lndata:any){
-    console.log(lndata);
-    
-    
+    const logindata={
+      email:lndata.email,
+      password:lndata.password
+    }
+    this.userserice.loginService(logindata).subscribe((res)=>{
+      if(res){
+        const token=res.token;
+        localStorage.setItem('token',token);
+        console.log("LoggedIn Successfully !")
+      }
+    }
+    ,(error)=>{
+       
+      console.log(error.error.msg);
+      
+    }
+  
+  )
+   
   }
 }

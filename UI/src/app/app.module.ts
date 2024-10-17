@@ -6,20 +6,21 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { RetailerhomeComponent } from './retailerhome/retailerhome.component';
-// import { NgForm } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    RetailerhomeComponent
+    RetailerhomeComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule, // Use HttpClientModule instead of HttpClient
   ],
   providers: [],
   bootstrap: [AppComponent]

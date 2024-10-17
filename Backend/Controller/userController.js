@@ -1,111 +1,100 @@
 require('dotenv').config();
-const User=require('../Model/userModel');
+const User = require('../Model/userModel');
 const { validationResult } = require('express-validator');
-const bcrypt=require('bcrypt');
-const jwt=require('jsonwebtoken')
-const SecretKey=process.env.KEY
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const SecretKey = process.env.KEY;
 
-
-// const express=require('express');
-
-const Register=async (req,res)=> {   
+const Register = async (req, res) => {   
     try {
-        const error=validationResult(req);       
-        if (!error.isEmpty()){
-            return  res.status(400).json({
-                success:false,
-                msg:'error',
-                error:error.array()
-            })
+        const errors = validationResult(req);       
+        if (!errors.isEmpty()) {
+            return res.status(400).json({
+                success: false,
+                msg: 'Validation Error',
+                errors: errors.array()
+            });
         } 
-               
-        const email=req.body.email;
-        const pass=req.body.password;
-        hsdpass=await bcrypt.hash(pass,10);
-        const userdata=await User.findOne({email});
+        
+        const { username, email, password } = req.body; // Destructure from request body
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const existingUser = await User.findOne({ email });
          
-        if (userdata){
-            return  res.status(400).json({
-                success:false,
-                msg:'User Already registered'
-            })
+        if (existingUser) {
+            return res.status(400).json({
+                success: false,
+                msg: 'User already registered'
+            });
         }
 
-        const newUser=new User({
-            username:req.body.username,
-            email:req.body.email,
-            password:hsdpass,
-            cartitems:[]
+        const newUser = new User({
+            username,
+            email,
+            password: hashedPassword,
+            cartitems: []
         });
         
         await newUser.save();
-        return res.status(200).json({
-            msg:"New User Added Successfully !"
-        })
+        return res.status(201).json({
+            success: true,
+            msg: "New user added successfully!"
+        });
 
-        
     } catch (error) {
-        return  res.status(500).json({
-            success:false,
-            msg:"Server Error"
-        })
-        
-    }
-
-    
-}
-
-const Login=async(req,res)=>{
-    try {
-        const {email,password}=req.body;
-        const userdata=await User.findOne({email});
-        if(!userdata){
-            return res.status(400).json(
-                {
-                success:false,
-                msg:"Enter Valid email or Password"
-            }
-            )
-        }
-
-        const isMatch=await bcrypt.compare(password,userdata.password);
-        // console.log(isMatch);
-        
-        if(!isMatch){
-            return res.status(400).json(
-                {
-                success:false,
-                msg:"Enter Valid email or Password"
-            }
-            )
-
-        }
-        // console.log(SecretKey);
-        
-
-        const token = jwt.sign({id:userdata._id,email: userdata.email }, SecretKey, { expiresIn: "1h" });
-        // console.log(token);
-        
-
-        return res.status(200).json(
-            {
-                success:true,
-                msg:"Loggedin Successfully",
-                token:token
-            }
-        )
-
-
-
-    }
-    catch(error){
+        console.error("Error in Register:", error);
         return res.status(500).json({
-            success:true,
-            msg:"Server Error"
-        })
+            success: false,
+            msg: "Server Error"
+        });
     }
 }
 
-module.exports={
-    Register,Login
+const Login = async (req, res) => {
+    try {
+        const { email, password } = req.body; // Destructure from request body       
+        const userData = await User.findOne({ email });
+
+        if (!userData) {
+            return res.status(401).json({
+                success: false,
+                msg: "Invalid email or password"
+            });
+        }
+
+        const isMatch = await bcrypt.compare(password, userData.password);
+        
+        if (!isMatch) {
+            return res.status(401).json({
+                success: false,
+                msg: "Invalid email or password"
+            });
+        }
+
+        if (!SecretKey) {
+            return res.status(500).json({
+                success: false,
+                msg: "Server error: Secret key not defined"
+            });
+        }
+
+        const token = jwt.sign({ id: userData._id, email: userData.email }, SecretKey, { expiresIn: "1h" });
+
+        return res.status(200).json({
+            success: true,
+            msg: "Logged in successfully",
+            token: token
+        });
+
+    } catch (error) {
+        console.error("Error in Login:", error);
+        return res.status(500).json({
+            success: false,
+            msg: "Server Error"
+        });
+    }
+}
+
+module.exports = {
+    Register,
+    Login
 }

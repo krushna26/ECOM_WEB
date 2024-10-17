@@ -6,6 +6,8 @@ const userRouter=require('./Routes/userRoute');
 const port=process.env.SERVER_PORT;
 const db_url=process.env.DB_URL
 
+const cors=require('cors');
+
 
 
 mongoose.connect(`${db_url}`, {
@@ -20,7 +22,8 @@ app.listen(port,()=>{
     console.log(port)
 });
 
-
+app.use(cors());
+app.use(express.urlencoded({ extended: true }));
 app.use('/user',userRouter);
 
 
