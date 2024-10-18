@@ -1,0 +1,48 @@
+/* Basic resets */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  
+  /* Main content area */
+  main {
+    padding-bottom: 60px; /* Give space for the fixed footer */
+  }
+  
+  /* Footer Styling */
+  footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 0px;
+    background-color: #333333;
+    color: white;
+  }
+  
+  .footer-content {
+    max-width: 1200px; /* Limit width to make it look better */
+    margin: 0 auto; /* Center the footer content */
+  }
+  
+  .footer-content ul {
+    list-style: none; /* Remove bullet points */
+    padding: 0; /* Remove default padding */
+  }
+  
+  .footer-content ul li {
+    display: inline; /* Align links in a single line */
+    margin: 0 10px; /* Spacing between links */
+  }
+  
+  .footer-content a {
+    color: white; /* Link color */
+    text-decoration: none; /* Remove underline */
+  }
+  
+  .footer-content a:hover {
+    text-decoration: underline; /* Underline on hover for better UX */
+  }
+  

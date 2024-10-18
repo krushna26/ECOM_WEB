@@ -1,0 +1,46 @@
+/* Styling for the navigation bar container */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #333333; /* Background color of the navbar */
+    display: flex; /* Use flexbox for alignment */
+    justify-content: space-between; /* Space between logo and nav links */
+    align-items: center; /* Center items vertically */
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Ensure it stays on top */
+    padding: 0 20px; /* Padding on the left and right */
+  }
+  
+  /* Styling for the logo (ECOM) on the left */
+  ul li.logo {
+    font-size: 26px;
+    font-weight: bold;
+    color: white;
+    padding: 16px 30px;
+    text-transform: uppercase;
+  }
+  
+  /* Styling for the navigation links container */
+  .nav-links {
+    display: flex; /* Use flexbox for the links on the right */
+    gap: 15px; /* Add spacing between the links */
+  }
+  
+  /* Styling for each navigation link */
+  .nav-links li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 16px 40px;
+    text-decoration: none;
+    font-size: 18px;
+  }
+  
+  /* Hover effect for navigation links */
+  .nav-links li a:hover {
+    background-color: #111;
+  }
+  
