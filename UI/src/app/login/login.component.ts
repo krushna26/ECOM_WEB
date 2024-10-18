@@ -10,8 +10,13 @@ import { Route, Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  islogin:boolean=true;
+  issignup:boolean=false;
+  errmsg="";
+  sucmsg="";
+  issignedup=false;//Need to change the flag after Login
 
-  constructor(private userserice:UserService) { }
+  constructor(private userserice:UserService,private route:Router) { }
 
   ngOnInit(): void {
   }
@@ -25,10 +30,11 @@ export class LoginComponent implements OnInit {
       if(res){
         const token=res.token;
         localStorage.setItem('token',token);
-        console.log("LoggedIn Successfully !")
+        this.route.navigate(['/retailhome']);
       }
     }
     ,(error)=>{
+      this.errmsg=error.error.msg;
        
       console.log(error.error.msg);
       
@@ -37,4 +43,18 @@ export class LoginComponent implements OnInit {
   )
    
   }
+  signuped(data:any){
+    
+
+  }
+  decision1(){
+    this.issignup=true;
+    this.islogin=false;
+  }
+  decision2(){
+    this.islogin=true;
+    this.issignup=false;
+  }
+
+
 }

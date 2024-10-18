@@ -1,0 +1,81 @@
+/* General body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+}
+
+/* Headings */
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Error message styles */
+p.error-message {
+    color: red;
+    text-align: center; /* Center align the error message */
+    margin-bottom: 10px; /* Add space below the error message */
+}
+
+/* Form container */
+form {
+    max-width: 400px; /* Set a max width for the form */
+    margin: 20px auto; /* Center the form with some vertical space */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* Input fields */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%; /* Full-width input fields */
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Submit button */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker shade for hover effect */
+}
+
+/* Links */
+.notfound {
+    text-align: center; /* Center the links */
+    margin-top: 20px;
+}
+
+.notfound li {
+    list-style: none; /* Remove bullet points */
+    margin: 5px 0;
+}
+
+.notfound a {
+    text-decoration: none;
+    color: #007bff; /* Link color */
+    font-size: 14px;
+}
+
+.notfound a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
