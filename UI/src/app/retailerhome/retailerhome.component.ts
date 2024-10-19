@@ -10,6 +10,7 @@ export class RetailerhomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    // window.location.reload();
   }
 
 }

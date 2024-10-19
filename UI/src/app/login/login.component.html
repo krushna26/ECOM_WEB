@@ -2,6 +2,8 @@
   
   <h2>Login</h2>
   <p class="error-message">{{errmsg}}</p>
+  <p *ngIf="issignedup" class="Suc-message">{{sucmsg}}</p>
+
     <form #logind="ngForm" (ngSubmit)="login(logind.value)">
       <label for="email">Email</label><br />
       <input type="email" name="email" ngModel placeholder="Enter Your Email" required /><br /><br />
@@ -20,7 +22,6 @@
 <div  *ngIf="issignup">
   <h2>SignUp</h2>
   <p class="error-message">{{errmsg}}</p>
-  <p *ngIf="issignedup" class="error-message">{{sucmsg}}</p>
     <form #signup="ngForm" (ngSubmit)="signuped(signup.value)">
       <label for="Name">Name</label><br />
       <input type="text" name="name" ngModel placeholder="Enter Your Name" required /><br /><br />
