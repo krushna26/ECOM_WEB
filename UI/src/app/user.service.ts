@@ -1,11 +1,13 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  data:any;
 
   private apiUrl = "http://localhost:3000/user"; // Base URL for the API
   
@@ -30,5 +32,13 @@ export class UserService {
   logout(): void {
     localStorage.removeItem('token');
     this.loginStatusChanged.emit(false); // Emit logout status change
+  }
+  getdatafromToken():void{
+    const tkn=localStorage.getItem('token');
+    if(tkn){
+    return jwtDecode(tkn)
+    }
+
+
   }
 }
