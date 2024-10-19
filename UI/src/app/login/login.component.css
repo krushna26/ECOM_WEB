@@ -19,6 +19,11 @@ p.error-message {
     text-align: center; /* Center align the error message */
     margin-bottom: 10px; /* Add space below the error message */
 }
+p.Suc-message {
+    color: rgb(13, 126, 50);
+    text-align: center; /* Center align the error message */
+    margin-bottom: 10px; /* Add space below the error message */
+}
 
 /* Form container */
 form {
