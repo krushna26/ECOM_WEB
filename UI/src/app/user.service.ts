@@ -21,7 +21,6 @@ export class UserService {
       'Content-Type': 'application/json'
     });
 
-    // Return the observable, don't subscribe here
     return this.http.post<any>(`${this.apiUrl}/login`, logindata, { headers });
   }
 
@@ -33,12 +32,16 @@ export class UserService {
     localStorage.removeItem('token');
     this.loginStatusChanged.emit(false); // Emit logout status change
   }
-  getdatafromToken():void{
+  getdatafromToken():any{
     const tkn=localStorage.getItem('token');
     if(tkn){
     return jwtDecode(tkn)
     }
 
 
+  }
+
+  getdatabyid(id:string){
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
   }
 }
