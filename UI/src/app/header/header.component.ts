@@ -13,10 +13,9 @@ export class HeaderComponent implements OnInit {
   constructor(private route: Router, private userService: UserService) { }
 
   ngOnInit(): void {
-    const token = localStorage.getItem('token');
-    if (token) {
-      this.isloggedin = true;
-    }
+    const datas=this.userService.getdatafromToken();
+    console.log(datas);
+    
 
     this.userService.loginStatusChanged.subscribe((status: boolean) => {
       this.isloggedin = status;
