@@ -14,7 +14,8 @@ import { FooterComponent } from './footer/footer.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { UserhomeComponent } from './userhome/userhome.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
-import { SignupComponent } from './signup/signup.component'; // Import HttpClientModule
+import { SignupComponent } from './signup/signup.component';
+import { CartComponent } from './cart/cart.component'; // Import HttpClientModule
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { SignupComponent } from './signup/signup.component'; // Import HttpClien
     UserhomeComponent,
     ForgotpasswordComponent,
     SignupComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,

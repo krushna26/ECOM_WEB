@@ -8,6 +8,7 @@ import { ContactusComponent } from './contactus/contactus.component';
 import { UserhomeComponent } from './userhome/userhome.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { SignupComponent } from './signup/signup.component';
+import { CartComponent } from './cart/cart.component';
 
 const routes: Routes = [
 
@@ -18,8 +19,9 @@ const routes: Routes = [
   { path: 'userhome', component: UserhomeComponent },
   {path:'forgot-password',component:ForgotpasswordComponent},
   {path:'signup',component:SignupComponent},
+  {path:'cart',component:CartComponent},
   { path: '**', component: NoPageComponentComponent },
-  
+
 ];
 
 @NgModule({

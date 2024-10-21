@@ -86,7 +86,7 @@ const Login = async (req, res) => {
         });
 
     } catch (error) {
-        console.error("Error in Login:", error);
+        // console.error("Error in Login:", error);
         return res.status(500).json({
             success: false,
             msg: "Server Error"
@@ -94,7 +94,38 @@ const Login = async (req, res) => {
     }
 }
 
+const getbyId =async function(req,res) {
+try {
+    const itemId = req.params.id;
+    const res1=await User.findById(itemId);
+    if (res1){
+        return res.status(200).json({
+            success:true,
+            data:res1
+
+        })
+    }
+    else{
+        res.status(400).json({
+            success:false,
+            error:"Id is not Valid"
+        })
+    }
+} catch (error) {
+    
+    return res.status(500).json({
+        success: false,
+        msg: "Server Error"
+    });
+}    
+
+    
+}
+
 module.exports = {
     Register,
-    Login
+    Login,
+    getbyId
+    
+
 }
