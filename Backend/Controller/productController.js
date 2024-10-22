@@ -62,9 +62,36 @@ const addproduct = async (req, res) => {
         msg: "Added Successfully!.",
       });
     }
-  } catch (error) {}
+  } catch (error) {
+    return res.status(500).json({
+      sucess: false,
+      msg: "error",
+      error: error,
+    });
+
+    
+  }
 };
+const getallProducts=async (req,res)=>{
+  try {
+    const data=await Product.find();  
+    return res.status(200).json({
+      sucess:true,
+      products:data
+    })
+    
+  } catch (error) {
+    return res.status(500).json({
+      sucess: false,
+      msg: "error",
+      error: error,
+    });
+    
+  }
+}
+
 module.exports = {
   getProductByID,
   addproduct,
+  getallProducts
 };

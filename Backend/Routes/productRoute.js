@@ -6,8 +6,10 @@ const bodyParser=require('body-parser');
 router.use(bodyParser.json())
 router.use(express.json())
 
-router.get('/:id',productController.getProductByID)
-router.post('/add',productValidations,productController.addproduct)
+router.get('/:id',productController.getProductByID);
+router.post('/add',productValidations,productController.addproduct);
+router.get('/',productController.getallProducts);
+
 
 
 module.exports=router

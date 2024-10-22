@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
         const token = res.token;
         localStorage.setItem('token', token);
         this.userService.loginStatusChanged.emit(true); // Emit login status
-        this.route.navigate(['/retailhome']);
+        this.route.navigate(['/home']);
       }
     },
     (error) => {

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -15,7 +15,8 @@ import { ContactusComponent } from './contactus/contactus.component';
 import { UserhomeComponent } from './userhome/userhome.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { SignupComponent } from './signup/signup.component';
-import { CartComponent } from './cart/cart.component'; // Import HttpClientModule
+import { CartComponent } from './cart/cart.component';
+import { ProductDetailsComponent } from './product-details/product-details.component'; // Import HttpClientModule
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { CartComponent } from './cart/cart.component'; // Import HttpClientModul
     ForgotpasswordComponent,
     SignupComponent,
     CartComponent,
+    ProductDetailsComponent,
   ],
   imports: [
     BrowserModule,

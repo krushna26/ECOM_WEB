@@ -11,7 +11,6 @@ export class UserService {
 
   private apiUrl = "http://localhost:3000/user"; // Base URL for the API
   
-  // EventEmitter to notify other components about login status changes
   loginStatusChanged = new EventEmitter<boolean>();
 
   constructor(private http: HttpClient) { }
@@ -41,7 +40,7 @@ export class UserService {
 
   }
 
-  getdatabyid(id:string){
+  getdatabyid(id:string):Observable<any>{
     return this.http.get<any>(`${this.apiUrl}/${id}`);
   }
 }
