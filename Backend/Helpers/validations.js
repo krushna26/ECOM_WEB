@@ -17,3 +17,13 @@ exports.UserRegisterValidations = [
             minNumbers: 1
         })
 ];
+
+exports.productValidations=[
+    check('name','Name is Required').notEmpty(),
+    check('price','Price is Required').notEmpty(),
+    check('color','Color is Required').notEmpty(),
+    check('Category','Category is Required').notEmpty(),
+    check('Description','Description is Required').notEmpty(),
+    check('ProductImageurl','ProductImageurl is Required').notEmpty(),
+    check('quantity','quantity is Required').notEmpty()
+]; 
