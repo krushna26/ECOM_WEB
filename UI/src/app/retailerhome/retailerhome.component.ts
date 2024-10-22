@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-retailerhome',
@@ -6,11 +7,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./retailerhome.component.css']
 })
 export class RetailerhomeComponent implements OnInit {
+  all_products:any[]=[]
 
-  constructor() { }
+  constructor(private productService:ProductService) { }
 
   ngOnInit(): void {
-    // window.location.reload();
+    this.productService.viewallproduct().subscribe((res:any)=>{
+      if(res){
+        this.all_products=res.products
+      }
+
+    }
+  ,(error)=>{
+console.log(error);
+
+  })
+
   }
 
 }

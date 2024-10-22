@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
     }
     // Subscribe to login status changes
     this.userService.loginStatusChanged.subscribe((status: boolean) => {
-      this.isloggedin = status;
+      this.isloggedin = true;
       this.updateUserDetails(); // Update user details whenever login status changes
     });
     
