@@ -12,4 +12,9 @@ export class ContactusComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  data( contactus:any){
+    
+
+  }
+
 }

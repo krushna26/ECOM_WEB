@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-// import { CartserviceService } from '../cartservice.service';
 import { UserService } from '../user.service';
 import { ProductService } from '../product.service';
 
@@ -9,9 +8,10 @@ import { ProductService } from '../product.service';
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
-  cartdata: any;
-  products: any;
-  cartcount: number = 10;
+  cartdata: any[] = [];  // Initialize cartdata as an array
+  products: any[] = [];  // Initialize products as an empty array
+  cartcount: number = 0; // Set cartcount to 0 initially
+
   constructor(
     private productService: ProductService,
     private userService: UserService
@@ -23,17 +23,21 @@ export class CartComponent implements OnInit {
       this.userService.getdatabyid(userData.id).subscribe((res) => {
         if (res && res.data) {
           this.products = res.data.cartItems;
+
+          // Process cart items after data is fetched
+          if (this.products.length > 0) {
+            for (let i = 0; i < this.products.length; i++) {
+              this.productService.getcarElement(this.products[i].objectId).subscribe((cartItem) => {
+                this.cartdata.push(cartItem); // Add cart element to cartdata
+              });
+              this.cartcount += this.products[i].quantity; // Update cart count
+            }
+          }
+
+          // Store cart count in local storage
+          localStorage.setItem('cartcount', String(this.cartcount));
         }
       });
     }
-
-    if (this.products.length != 0) {
-      for (var i = 0; i < this.products.length; i++) {
-        this.cartdata.push(this.productService.getcarElement(this.products[i].objectId));
-        this.cartcount += this.products[i].quantity;
-      }
-    }
-
-    localStorage.setItem('cartcount',String(this.cartcount))
   }
 }
