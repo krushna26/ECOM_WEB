@@ -1,1 +1,29 @@
-<p>product-details works!</p>
+<div class="productdetails" *ngIf="product">
+    <h1>Trendy Products</h1>
+    <div class="row">
+      <div class="product-image">
+        <img src="{{product.ProductImageurl}}">
+      </div>
+      <div class="product-details">
+        <h6 class="name-head">{{product.name}}</h6>
+        <h6>Price: {{product.price}}</h6>
+        <div class="color">
+          <span class="color-logo" [style.background-color]="product.color"></span>
+          <h6>Color: {{product.color}}</h6>
+        </div>
+        <h6>Category: {{product.Category}}</h6>
+        <h6>Description: {{product.Description}}</h6>
+        <div class="buttons" *ngIf=add>
+          <button class="add-to-cart"  (click)="addtocart()">Add to Cart</button>
+          <button class="buy-now">Buy Now</button>
+        </div>
+  
+        <!-- <div>click here to login </div> -->
+        <div class="quantity">
+          <button class="quantity-btn" (click)="submit('m')">-</button>
+          <input type="text" #inpu value={{qt}} (keyup)="submit(inpu.value)">
+          <button class="quantity-btn" #add (click)="submit('a')">+</button>
+        </div>
+      </div>
+    </div>
+  </div>

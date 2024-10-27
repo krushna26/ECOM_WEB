@@ -1,1 +1,15 @@
-<p>contactus works!</p>
+<h3>Contact Us</h3>
+<div>
+    <form #contactus="ngForm" (ngSubmit)="data(contactus.value)"></form>
+
+    <!-- Need to add the form for Query Submission and consulling which takes user input as email phone number query in Detail   -->
+    
+    <label for="Name">Name</label><br />
+      <input type="text" name="name" ngModel placeholder="Enter Your Name" required /><br /><br />
+      <label for="email">Email</label><br />
+      <input type="email" name="email" ngModel placeholder="Enter Your Email" required /><br /><br />
+      <label for="query">Query</label><br />
+      <input type="TextBox" name="query" ngModel placeholder="Enter Your Query in Detail" required /><br /><br />
+      <button type="submit">Submit</button>
+
+</div>
