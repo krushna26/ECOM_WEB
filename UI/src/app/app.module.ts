@@ -12,9 +12,7 @@ import { NoPageComponentComponent } from './no-page-component/no-page-component.
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContactusComponent } from './contactus/contactus.component';
-import { UserhomeComponent } from './userhome/userhome.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
-import { SignupComponent } from './signup/signup.component';
 import { CartComponent } from './cart/cart.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { BuyComponent } from './buy/buy.component'; // Import HttpClientModule
@@ -28,9 +26,7 @@ import { BuyComponent } from './buy/buy.component'; // Import HttpClientModule
     HeaderComponent,
     FooterComponent,
     ContactusComponent,
-    UserhomeComponent,
     ForgotpasswordComponent,
-    SignupComponent,
     CartComponent,
     ProductDetailsComponent,
     BuyComponent,
