@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -43,11 +44,33 @@ export class LoginComponent implements OnInit {
   }
 
   signuped(data: any) {
+    const add_line1=data.add_line1
+    const add_line2=data.add_line2
+    const country=data.country
+    const state=data.state
+    const District=data.District
+    const city=data.city
+    const pincode=data.pincode
     const signupdata = {
       username: data.name,
       email: data.email,
-      password: data.password
+      password: data.password,
+      useraddress:[
+        add_line1,
+        add_line2,
+        country,
+        state,
+        District,
+        city,
+        pincode
+      ]
+
+
+      
     };
+
+    console.log("signupdata",signupdata);
+    
 
     this.userService.signupservice(signupdata).subscribe((res) => {
       this.issignedup = true;

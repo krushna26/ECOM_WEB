@@ -25,10 +25,24 @@
     <form #signup="ngForm" (ngSubmit)="signuped(signup.value)">
       <label for="Name">Name</label><br />
       <input type="text" name="name" ngModel placeholder="Enter Your Name" required /><br /><br />
+      <label for="Address">Address</label><br />
+      <div>
+        <input type="text" name="add_line1" ngModel placeholder="Enter Address line 1" required /><br /><br />
+        <input type="text" name="add_line2" ngModel placeholder="Enter Address line 2" required /><br /><br />
+        <input type="text" name="country" ngModel placeholder="country" required /><br /><br />
+        <input type="text" name="state" ngModel placeholder="state" required /><br /><br />
+        <input type="text" name="District" ngModel placeholder="District" required /><br /><br />
+        <input type="text" name="city" ngModel placeholder="City" required /><br /><br />
+        <input type="number" name="pincode" ngModel placeholder="pincode" required /><br /><br />
+      </div>
+      
       <label for="email">Email</label><br />
       <input type="email" name="email" ngModel placeholder="Enter Your Email" required /><br /><br />
       <label for="password">Password</label><br />
       <input type="password" name="password" ngModel placeholder="Enter Your Password" required />
+      <br /><br />
+      <label for="cnfpassword">Confirm Password</label><br />
+      <input type="password" name="cnfpassword" ngModel placeholder="Re-enter Password" required />
       <br /><br />
       <button type="submit">Submit</button>
       <div class="notfound">

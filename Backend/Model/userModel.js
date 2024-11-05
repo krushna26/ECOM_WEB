@@ -5,16 +5,25 @@ const mongoose=require('mongoose')
         email:String,
         password:String,
         useraddress:[
-            address={
+            add_line1={
+                type:String
+            },
+            add_line2={
+                type:String
+            },
+            country={
                 type:String
             },
             state={
                 type:String
             },
-            district={
+            District={
                 type:String
             },
-            pin={
+            city={
+                type:String
+            },
+            pincode={
                 type:Number
             }
         ],

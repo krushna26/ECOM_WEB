@@ -17,7 +17,7 @@ const Register = async (req, res) => {
             });
         } 
         
-        const { username, email, password } = req.body; // Destructure from request body
+        const { username, email, password ,useraddress} = req.body; // Destructure from request body
         const hashedPassword = await bcrypt.hash(password, 10);
         const existingUser = await User.findOne({ email });
          
@@ -32,9 +32,9 @@ const Register = async (req, res) => {
             username,
             email,
             password: hashedPassword,
+            useraddress,
             cartitems: []
         });
-        
         await newUser.save();
         return res.status(201).json({
             success: true,
