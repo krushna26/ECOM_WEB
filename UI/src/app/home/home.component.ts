@@ -29,29 +29,7 @@ export class HomeComponent implements OnInit {
       console.log(error);
 
   })
-
-
-  
   }
-
-  
-
-
-
-  addtocart(id:any){
-    console.log("Id :-",id);
-    this.route.navigate([`/cart`]);
-    this.productService.getcarElement(id).subscribe((res)=>{
-      if(res){
-        this.cartproducts.push(res.data)
-      }
-  
-    })
-    
-  }
-  
-
-
 
   
 }

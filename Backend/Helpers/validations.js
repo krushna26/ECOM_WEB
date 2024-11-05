@@ -15,7 +15,8 @@ exports.UserRegisterValidations = [
             minUppercase: 1,
             minSymbols: 1,
             minNumbers: 1
-        })
+        }),
+    // check('address')
 ];
 
 exports.productValidations=[

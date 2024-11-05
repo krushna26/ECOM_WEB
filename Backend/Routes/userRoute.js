@@ -10,4 +10,5 @@ router.use(express.json())
 router.post('/register',UserRegisterValidations,userController.Register)
 router.post('/Login',userController.Login)
 router.get('/:id',userController.getbyId)
+router.patch('/updateProduct',userController.cartupdate)
 module.exports=router
