@@ -9,16 +9,15 @@ import { UserService } from '../user.service';
 })
 export class HeaderComponent implements OnInit {
   isloggedin = false;
-  cartnumber = 0;
+  cartnumber :any;
   loggedUserName = '';
+  udata:any;
 
   constructor(private router: Router, private userService: UserService) {}
 
   ngOnInit(): void {
-     this.loadCartCount();
-
-    // Subscribe to login status changes for real-time updates
-    this.userService.loginStatusChanged.subscribe((status: boolean) => {
+    this.cartnumber=localStorage.getItem('cartcount')
+      this.userService.loginStatusChanged.subscribe((status: boolean) => {
       this.isloggedin = status;
       if (status) {
         this.updateUserDetails(); 
@@ -34,11 +33,7 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  // Load cart count from local storage
-  private loadCartCount(): void {
-    const storedCartCount = localStorage.getItem('cartcount');
-    this.cartnumber = storedCartCount ? Number(storedCartCount) : 0;
-  }
+  
 
   // Update logged-in user's details including name and cart count
   updateUserDetails(): void {
@@ -49,8 +44,9 @@ export class HeaderComponent implements OnInit {
           if (res && res.data) {
             const user = res.data;
             this.loggedUserName = user.username;
-            // Uncomment if cart items are available in user data
-            this.cartnumber = user.cartItems?.length || 0;
+            this.udata=res.data;
+            // console.log(this.udata);
+            
           }
         },
         (error) => {
@@ -71,4 +67,15 @@ export class HeaderComponent implements OnInit {
     this.resetUserDetails();
     this.router.navigate(['/login']);
   }
+
+
+  navigateToCart() {
+    if (!this.isloggedin) {
+      alert('Please log in to view your cart.');
+      this.router.navigate(['/login']); // Navigate to the login page
+    } else {
+      this.router.navigate(['/cart']); // Navigate to the cart page if logged in
+    }
+  }
+
 }

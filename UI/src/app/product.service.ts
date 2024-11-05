@@ -14,12 +14,6 @@ export class ProductService {
     return this.http.get(`${this.producturl}/${id}`)
   }
 
-  addproduct(productdata:any){
-      // This is used to for maintaining  the quantity of products and for adding of New products
-
-  }
-
-
   viewallproduct():Observable<any>{
     return this.http.get<any>(`${this.producturl}`);
   }

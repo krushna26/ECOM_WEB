@@ -14,8 +14,11 @@ import { FooterComponent } from './footer/footer.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { CartComponent } from './cart/cart.component';
-import { ProductDetailsComponent } from './product-details/product-details.component';
-import { BuyComponent } from './buy/buy.component'; // Import HttpClientModule
+import { ProductDetailsComponent } from './home/product-details/product-details.component';
+import { BuyComponent } from './buy/buy.component';
+import { UserprofileComponent } from './userprofile/userprofile.component';
+import { EditprofileComponent } from './editprofile/editprofile.component';
+import { CheckoutComponent } from './checkout/checkout.component'; // Import HttpClientModule
 
 @NgModule({
   declarations: [
@@ -30,6 +33,9 @@ import { BuyComponent } from './buy/buy.component'; // Import HttpClientModule
     CartComponent,
     ProductDetailsComponent,
     BuyComponent,
+    UserprofileComponent,
+    EditprofileComponent,
+    CheckoutComponent,
   ],
   imports: [
     BrowserModule,

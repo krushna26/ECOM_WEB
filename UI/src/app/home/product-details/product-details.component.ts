@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductService } from '../product.service';
-import { UserService } from '../user.service';
+import { ProductService } from '../../product.service';
+import { UserService } from '../../user.service';
 
 @Component({
   selector: 'app-product-details',
@@ -13,6 +13,8 @@ export class ProductDetailsComponent implements OnInit {
   qt: number = 1;
   maxStock: number = 20;
   isloggedin: boolean = false;
+  tokendata: string = '';
+  userdatafromtoken: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -34,7 +36,6 @@ export class ProductDetailsComponent implements OnInit {
       (res: any) => {
         if (res && res.data) {
           this.product = res.data;
-          console.log(this.product);
         }
       },
       (error) => {
@@ -72,26 +73,44 @@ export class ProductDetailsComponent implements OnInit {
       alert('Product details are not available.');
       return;
     }
-    const cartItem = {
-      productId: this.product._id,
-      quantity: this.qt,
-    };
-    this.userService.getdatafromToken().subscribe((res:any)=>{
 
-    });
+    this.userdatafromtoken = this.userService.getdatafromToken();
+    console.log(this.userdatafromtoken);
     
-    // Add to cart logic or call to cart service
-    console.log('Added to cart:', cartItem);
-    alert('Item added to cart successfully!');
+    if (this.userdatafromtoken == null) {
+      alert('Need to login');
+      this.router.navigate(['/login']);
+    } else {
+      const cartItem = {
+        userId: this.userdatafromtoken.id,
+        productId: this.product._id,
+        quantity: this.qt,
+      };
+
+      // console.log("Datafrom the Token and userid added to hthis",cartItem);
+      this.userService.UpdateItemtoCart(cartItem).subscribe(
+        (res: any) => {
+          this.router.navigate(['/cart'])
+          // console.log('Added to cart:', cartItem);
+          // alert('Item added to cart successfully!');
+
+        },
+        (error) => {
+          alert(error.error.msg);
+
+        }
+      );
+
+     
+    }
   }
 
   buy() {
-    console.log('Login Staus', this.isloggedin);
-    if (this.isloggedin === true) {
-      alert('You need to Login ');
+    this.userdatafromtoken = this.userService.getdatafromToken();
+    if (this.userdatafromtoken == null) {
+      alert('Need to login');
       this.router.navigate(['/login']);
     } else {
-      // alert("")
       this.router.navigate(['/buy']);
     }
   }

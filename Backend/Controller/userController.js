@@ -1,5 +1,6 @@
 require('dotenv').config();
 const User = require('../Model/userModel');
+const Product=require('../Model/product');
 const { validationResult } = require('express-validator');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -77,7 +78,7 @@ const Login = async (req, res) => {
             });
         }
 
-        const token = jwt.sign({ id: userData._id, email: userData.email }, SecretKey, { expiresIn: "1h" });
+        const token = jwt.sign({ id: userData._id, email: userData.email }, SecretKey, { expiresIn: "0.1h" });
 
         return res.status(200).json({
             success: true,
@@ -122,10 +123,50 @@ try {
     
 }
 
+
+const cartupdate=async (req,res)=>{
+    
+    const userId=req.body.userId;
+    const productId=req.body.productId;
+    const quantity=req.body.quantity;
+    // console.log(userId);
+    const usedata=await User.findById(userId);
+    const productdata=await Product.findById(productId);
+    if(!usedata | !productdata){
+        return res.status(400).json({
+            success:false,
+            msg:"No User/Product Found in the Database"
+        })
+    }
+
+    let cartfromuser=usedata.cartitems;
+    let c=[]
+    for (let i=0;i<cartfromuser.length;i++){            
+        if (cartfromuser[i].productId==productId){
+            c.push(i) 
+            cartfromuser[i].quantity=cartfromuser[i].quantity+quantity;
+            }
+     
+    }
+
+    if(c.length==0){        
+        v={
+            productId:productId,
+            quantity:quantity
+        }
+        cartfromuser.push(v);
+    }
+    await User.findByIdAndUpdate({_id:userId},{cartitems:cartfromuser
+    })
+
+    return res.status(200).json({
+        msg:"Added to cart !"
+    })
+
+}
 module.exports = {
     Register,
     Login,
-    getbyId
-    
-
+    getbyId,
+    cartupdate
 }

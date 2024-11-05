@@ -4,16 +4,18 @@
       <li><a routerLink="/" routerLinkActive="active">Home</a></li>
       <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
       <li><a routerLink="/contact-us" routerLinkActive="active">Contact Us</a></li>
-      <li><a href="/cart">Cart({{cartnumber}})</a></li>
+      <li>
+        <a (click)="navigateToCart()">Cart ()</a>
+      </li>
     </div>
   </ul>
 
-  <ul *ngIf="isloggedin===true">
+  <ul *ngIf="isloggedin===true" >
     <li class="logo">ECOM</li>
-    <div class="nav-links">
+    <div class="nav-links" *ngIf="udata">
       <li><a routerLink="/" routerLinkActive="active">Home</a></li>
       <li><a href="/cart">Cart({{cartnumber}})</a></li>
-      <li><a href="/">{{loggedUserName}}</a></li>
+      <li><a [routerLink]="['/userdetails', udata._id]" >{{loggedUserName}}</a></li>
       <li><a (click)="logout()">Logout</a></li>
     </div>
   </ul>

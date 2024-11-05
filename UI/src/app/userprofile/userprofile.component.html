@@ -1,0 +1,17 @@
+<div class="user-profile" *ngIf="userdata">
+    <h2>User Profile</h2>
+    <div class="profile-info">
+        <div class="profile-picture">
+            <img src="https://img.freepik.com/premium-vector/silver-membership-icon-default-avatar-profile-icon-membership-icon-social-media-user-image-vector-illustration_561158-4195.jpg?semt=ais_hybrid" alt="Profile Picture">
+        </div>
+      <p><strong>Username:</strong> {{ userdata.username }}</p>
+      <p><strong>Email:</strong> {{ userdata.email }}</p>
+    </div>
+  </div>
+  <div *ngIf="userdata">
+    <a [routerLink]="['/edit-profile', userdata._id]"  class="edit-profile">
+        <img src="https://img.icons8.com/ios-glyphs/30/000000/edit.png" alt="Edit Profile Icon"> Edit Profile
+    </a>
+  </div>
+
+  
