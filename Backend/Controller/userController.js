@@ -163,10 +163,46 @@ const cartupdate=async (req,res)=>{
         msg:"Added to cart !"
     })
 
+
+
+
+}
+const forgotpassword=async (req,res)=>{
+
+    try {
+        const data=await User.findOne({email:req.body.email});        
+    if(data){
+        const hashedPassword = await bcrypt.hash(req.body.password, 10);
+        console.log(hashedPassword);
+        
+       await User.findByIdAndUpdate({_id:data._id},{
+            password:hashedPassword
+        })
+
+        console.log("Password Reseted Successfully !!");
+        
+        res.status(200).json({
+            success:true,
+            msg:"Password Reseted Successfully !"
+        })
+
+        
+    }
+    } catch (error) {
+        res.status(400).json({
+            success:false,
+            msg:error
+        })
+        
+    }
+    
+    
+
 }
 module.exports = {
     Register,
     Login,
     getbyId,
-    cartupdate
+    cartupdate,
+    forgotpassword
 }

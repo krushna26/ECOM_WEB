@@ -16,7 +16,6 @@ exports.UserRegisterValidations = [
             minSymbols: 1,
             minNumbers: 1
         }),
-    // check('address')
 ];
 
 exports.productValidations=[
@@ -28,3 +27,19 @@ exports.productValidations=[
     check('ProductImageurl','ProductImageurl is Required').notEmpty(),
     check('quantity','quantity is Required').notEmpty()
 ]; 
+
+exports.forgotpasswordValidator=[
+    
+    check('password', 'Password must contain at least one uppercase letter, one special character, one digit, and be a minimum of 8 characters long')
+    .isStrongPassword({
+        minLength: 8, // Ensures minimum length matches your error message description
+        minLowercase: 1,
+        minUppercase: 1,
+        minSymbols: 1,
+        minNumbers: 1
+    })
+    ,
+    check('email', 'Enter a valid email')
+    .isEmail()
+    .normalizeEmail()
+]
