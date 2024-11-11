@@ -1,10 +1,9 @@
 <div class="full-page-container">
     <div class="container mt-4">
       <h2>Shopping Cart</h2>
-      <div class="cart-layout" *ngIf="cartdata">
+      <div class="cart-layout" *ngIf="cartdata.length>0">
         
-        <!-- Cart Items Section (75%) -->
-        <div class="cart-items">
+        <div class="cart-items" >
           <ul class="list-group mb-4">
             <li
               *ngFor="let item of cartdata; let i = index"
@@ -26,20 +25,26 @@
             </li>
           </ul>
         </div>
-  
+        
         <!-- Checkout Summary Section (25%) -->
         <div class="checkout-summary">
           <h5>Total Items: {{ cartcount }}</h5>
           <h5>Total Price: {{totalprice | currency:'INR'}} 
           </h5>
-          <button class="btn btn-success mt-3" routerLink="/checkout" [disabled]="!cartdata || cartdata.length === 0" >Proceed to Checkout</button>
+          <button class="btn btn-success mt-3">Proceed to Checkout</button>
         </div>
       </div>
   
       <!-- Empty Cart Message -->
-      <div class="empty-cart">
-        <p>Your cart is empty. Start adding some products!</p>
-      </div>
+      <div *ngIf="cartdata.length==0" class="empty">
+        <h5 class="heading">Cart is Empty !! </h5>
+        <p>
+          
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9ebsLuM_xgMT6MV68amyd76o2tLr0l8qq-g&s" alt="Empty cart">
+        </p>
+      <div>
+
+     
     </div>
   </div>
   

@@ -17,7 +17,7 @@ const Register = async (req, res) => {
             });
         } 
         
-        const { username, email, password } = req.body; // Destructure from request body
+        const { username, email, password ,useraddress} = req.body; // Destructure from request body
         const hashedPassword = await bcrypt.hash(password, 10);
         const existingUser = await User.findOne({ email });
          
@@ -32,9 +32,9 @@ const Register = async (req, res) => {
             username,
             email,
             password: hashedPassword,
+            useraddress,
             cartitems: []
         });
-        
         await newUser.save();
         return res.status(201).json({
             success: true,
@@ -163,10 +163,46 @@ const cartupdate=async (req,res)=>{
         msg:"Added to cart !"
     })
 
+
+
+
+}
+const forgotpassword=async (req,res)=>{
+
+    try {
+        const data=await User.findOne({email:req.body.email});        
+    if(data){
+        const hashedPassword = await bcrypt.hash(req.body.password, 10);
+        console.log(hashedPassword);
+        
+       await User.findByIdAndUpdate({_id:data._id},{
+            password:hashedPassword
+        })
+
+        console.log("Password Reseted Successfully !!");
+        
+        res.status(200).json({
+            success:true,
+            msg:"Password Reseted Successfully !"
+        })
+
+        
+    }
+    } catch (error) {
+        res.status(400).json({
+            success:false,
+            msg:error
+        })
+        
+    }
+    
+    
+
 }
 module.exports = {
     Register,
     Login,
     getbyId,
-    cartupdate
+    cartupdate,
+    forgotpassword
 }

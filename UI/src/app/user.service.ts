@@ -63,4 +63,8 @@ export class UserService {
 
     return this.http.patch(`${this.apiUrl}/updateProduct`, cartItem);
   }
+
+  resetpassword(resetdata1:any){
+    return this.http.patch(`${this.apiUrl}/forgot-password`,resetdata1)
+  }
 }
