@@ -1,6 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { jwtDecode } from 'jwt-decode';
 
@@ -9,10 +9,17 @@ import { jwtDecode } from 'jwt-decode';
 })
 export class UserService {
   private apiUrl = 'http://localhost:3000/user';
-  // EventEmitter to track login status
   loginStatusChanged = new EventEmitter<boolean>();
+  private cartSubject = new BehaviorSubject<number>(0);
+  cart$ = this.cartSubject.asObservable();
 
   constructor(private http: HttpClient) {}
+
+
+  addcartnumber(a:number){
+    this.cartSubject.next(a);
+
+  }
 
   loginService(logindata: any): Observable<any> {
     const headers: HttpHeaders = new HttpHeaders({

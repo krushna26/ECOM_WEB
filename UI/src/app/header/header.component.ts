@@ -9,20 +9,22 @@ import { UserService } from '../user.service';
 })
 export class HeaderComponent implements OnInit {
   isloggedin = false;
-  cartnumber :any;
+  cartnumber: number = 0;  // Use 'number' instead of 'Number'
   loggedUserName = '';
-  udata:any;
+  udata: any;
+  cartdata:any[]=[];
 
   constructor(private router: Router, private userService: UserService) {}
 
   ngOnInit(): void {
-    this.cartnumber=localStorage.getItem('cartcount')
-      this.userService.loginStatusChanged.subscribe((status: boolean) => {
+    
+    // Subscribe to login status changes
+    this.userService.loginStatusChanged.subscribe((status: boolean) => {
       this.isloggedin = status;
       if (status) {
-        this.updateUserDetails(); 
+        this.updateUserDetails(); // Update user details when logged in
       } else {
-        this.resetUserDetails(); 
+        this.resetUserDetails(); // Reset user details when logged out
       }
     });
 
@@ -31,9 +33,12 @@ export class HeaderComponent implements OnInit {
       this.isloggedin = true;
       this.updateUserDetails();
     }
-  }
 
-  
+    // Subscribe to cart changes
+    this.userService.cart$.subscribe((cartCount: number) => {
+      this.cartnumber+= cartCount; // Update cart count
+    });    
+  }
 
   // Update logged-in user's details including name and cart count
   updateUserDetails(): void {
@@ -44,9 +49,13 @@ export class HeaderComponent implements OnInit {
           if (res && res.data) {
             const user = res.data;
             this.loggedUserName = user.username;
-            this.udata=res.data;
-            // console.log(this.udata);
-            
+            this.udata = res.data;
+            const cartdata=res.data.cartitems;
+            let m=0;
+            for (let i=0;i<cartdata.length;i++){
+              m+=cartdata[0].quantity
+            }  
+            this.cartnumber=m          
           }
         },
         (error) => {
@@ -54,28 +63,29 @@ export class HeaderComponent implements OnInit {
         }
       );
     }
-  }
 
-  // Reset user details
+  }
+ 
+  // Reset user details when logging out
   private resetUserDetails(): void {
     this.loggedUserName = ''; 
-    this.cartnumber = 0;      
+    this.cartnumber = 0;
   }
 
+  // Log out and reset the user details
   logout(): void {
     this.userService.logout();
     this.resetUserDetails();
     this.router.navigate(['/login']);
   }
 
-
-  navigateToCart() {
+  // Navigate to the cart page or prompt the user to log in
+  navigateToCart(): void {
     if (!this.isloggedin) {
       alert('Please log in to view your cart.');
-      this.router.navigate(['/login']); // Navigate to the login page
+      this.router.navigate(['/login']); // Navigate to login page
     } else {
       this.router.navigate(['/cart']); // Navigate to the cart page if logged in
     }
   }
-
 }

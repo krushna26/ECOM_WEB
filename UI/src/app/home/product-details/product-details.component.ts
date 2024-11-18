@@ -86,13 +86,12 @@ export class ProductDetailsComponent implements OnInit {
         productId: this.product._id,
         quantity: this.qt,
       };
-
+    this.userService.addcartnumber(this.qt)
       // console.log("Datafrom the Token and userid added to hthis",cartItem);
       this.userService.UpdateItemtoCart(cartItem).subscribe(
         (res: any) => {
           this.router.navigate(['/cart'])
-          // console.log('Added to cart:', cartItem);
-          // alert('Item added to cart successfully!');
+
 
         },
         (error) => {
