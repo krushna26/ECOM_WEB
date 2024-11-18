@@ -8,11 +8,10 @@ import { ProductService } from '../product.service';
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
-  cartdata: any[] = [];  // Initialize cartdata as an array
-  products: any[] = [];  // Initialize products as an empty array
-  cartcount: number = 0; // Set cartcount to 0 initially
-  totalprice:number=0;
-
+  cartdata: any[] = []; 
+  products: any[] = []; 
+  isselected:boolean=false;
+  selecteddata:any[]=[]
   constructor(
     private productService: ProductService,
     private userService: UserService
@@ -27,36 +26,24 @@ export class CartComponent implements OnInit {
           if (this.products.length > 0) {
             for (let i = 0; i < this.products.length; i++) {
               this.productService.getcarElement(this.products[i].productId).subscribe((cartItem) => {
-                this.cartdata.push(cartItem.data); // Add cart element to cartdata
-                const p=Number(cartItem.data.price);
-                const q=Number(this.products[i].quantity);
-
-                
-                
-                this.totalprice+=(p*q)
-                
+                this.cartdata.push(cartItem.data); // Add cart element to cartdata              
               });
-              this.cartcount += this.products[i].quantity; // Update cart count
             }
           }
         }
-        localStorage.setItem('cartcount',String(this.cartcount))
       });
+    }        
+  }
+
+
+  toggleselected(item: any,event:Event) { 
+    const checkbox = event.target as HTMLInputElement; 
+    // console.log(checkbox.checked);
+    if (checkbox.checked) {
+      this.selecteddata.push(item);      
+    } else {
+      this.selecteddata = this.selecteddata.filter(i => i !== item);
     }
-
-
-
-    // for (var i=0;i<this.cartdata.length;i++){
-    //   // console.log(this.cartdata[i]);
-    //   let price=Number(this.cartdata[i].price);
-    //   let qtt=Number(this.cartdata[i].quantity);
-    //   this.totalprice+=(price*qtt);
-    // }
-
-    // console.log("Total Price",this.totalprice);
-    
-    
-    
   }
 
 

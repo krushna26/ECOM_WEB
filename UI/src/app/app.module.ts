@@ -18,7 +18,8 @@ import { ProductDetailsComponent } from './home/product-details/product-details.
 import { BuyComponent } from './buy/buy.component';
 import { UserprofileComponent } from './userprofile/userprofile.component';
 import { EditprofileComponent } from './editprofile/editprofile.component';
-import { CheckoutComponent } from './checkout/checkout.component'; // Import HttpClientModule
+import { CheckoutComponent } from './checkout/checkout.component';
+import { SummeryComponent } from './summery/summery.component'; // Import HttpClientModule
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { CheckoutComponent } from './checkout/checkout.component'; // Import Htt
     UserprofileComponent,
     EditprofileComponent,
     CheckoutComponent,
+    SummeryComponent,
   ],
   imports: [
     BrowserModule,
