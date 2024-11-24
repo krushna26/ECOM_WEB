@@ -1,0 +1,52 @@
+/* Checkout Summary Section */
+.checkout-summary {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px; /* Restrict width to avoid it being too wide */
+    margin-top: 20px;
+  }
+  
+  .checkout-summary h5 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  .checkout-summary h5 span {
+    color: #007bff;
+  }
+  
+  .checkout-summary .btn {
+    display: block;
+    width: 100%;
+    font-size: 1.1rem;
+    padding: 12px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .checkout-summary .btn:hover {
+    background-color: #218838;
+  }
+  
+  .checkout-summary .btn:focus {
+    outline: none;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .checkout-summary {
+      max-width: 100%;
+      padding: 15px;
+    }
+  }
+  

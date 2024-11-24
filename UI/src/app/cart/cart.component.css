@@ -1,175 +1,182 @@
-/* Full-page container */
+/* General Page Layout */
 .full-page-container {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f0f2f5;
-  }
-  
-  /* Main container */
-  .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 30px;
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Page Title */
-  h2 {
-    text-align: center;
-    font-size: 2rem;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-  }
-  
-  /* Flex layout for cart items and checkout */
-  .cart-layout {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  
-  /* Cart items section */
-  .cart-items {
-    flex: 3;
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 10px;
-  }
-  
-  /* Cart item styling */
-  .list-group-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #fff;
-    margin-bottom: 15px;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
-  }
-  
-  /* Product info container */
-  .product-info {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    flex: 1; /* Ensure it takes space and leaves room for the total price */
-  }
-  
-  /* Product image styling */
-  .product-image {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-  }
-  
-  /* Product details text styling */
-  .product-details {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .product-details h5 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #333;
-    margin: 0;
-  }
-  
-  .product-details p {
-    font-size: 0.9rem;
-    color: #777;
-    margin: 4px 0;
-  }
-  
-  /* Price badge */
-  .badge {
-    font-size: 1rem;
-    color: #fff;
-    background-color: #28a745;
-    padding: 8px 15px;
-    border-radius: 5px;
-    font-weight: 500;
-    margin-left: 20px; /* Add space between product details and total price */
-  }
-  
-  /* Checkout summary styling */
-  .checkout-summary {
-    flex: 1;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .checkout-summary h5 {
-    font-size: 1.2rem;
-    color: #444;
-    font-weight: 600;
-  }
-  
-  .checkout-summary .btn-success {
-    width: 100%;
-    padding: 12px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    background-color: #28a745;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .checkout-summary .btn-success:hover {
-    background-color: #218838;
-  }
-  
-/* Empty Cart Message Container */
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Heading Style */
+h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Cart Layout */
+.cart-layout {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+/* Cart Items Section */
+.cart-items {
+  flex: 3;
+}
+
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.product-info {
+  display: flex;
+  align-items: center;
+}
+
+.product-image {
+  width: 50px;
+  height: 50px;
+  margin-right: 15px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-details h5 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.product-details p {
+  margin: 5px 0;
+  color: #6c757d;
+}
+
+.badge {
+  font-size: 1rem;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 20px;
+}
+
+input[type="checkbox"] {
+  margin-right: 15px;
+  transform: scale(1.2);
+}
+
+/* Checkout Summary Section */
+.checkout-summary {
+  flex: 1;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.checkout-summary h4 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.checkout-summary .total-price {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #28a745;
+}
+
+/* Empty Cart Message */
 .empty {
   text-align: center;
-  color: #666;
-  font-size: 1.2em;
-  margin-top: 30px;
-  padding: 40px;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 50px 20px;
 }
 
-/* Empty Cart Heading */
 .empty .heading {
-  font-size: 1.5em;
-  color: #333;
-  margin-bottom: 20px;
-  font-weight: 600;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #dc3545;
+  margin-bottom: 10px;
 }
 
-/* Empty Cart Image */
 .empty img {
-  width: 150px;
-  height: auto;
+  max-width: 200px;
+  margin-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .cart-layout {
+    flex-direction: column;
+  }
+
+  .cart-items,
+  .checkout-summary {
+    width: 100%;
+  }
+}
+/* Style for the progress container */
+.progress-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* Style for each step */
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+.step p {
   margin-top: 10px;
-  border-radius: 8px;
-  opacity: 0.85;
-  transition: opacity 0.3s ease;
+  font-size: 14px;
 }
 
-.empty img:hover {
-  opacity: 1;
+/* Style for the cursor (indicator) */
+.cursor {
+  width: 30px;
+  height: 30px;
+  background-color: grey;
+  border-radius: 50%;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
+/* Add different color when step is active */
+.step.active {
+  color: #3498db; /* Blue when active */
+}
+
+.cursor.active {
+  background-color: #3498db; /* Blue for the cursor when active */
+  transform: scale(1.2); /* Increase size when active */
+}
+
+/* Add custom style for hover effect */
+.step:hover .cursor {
+  transform: scale(1.5); /* Hover effect to increase cursor size */
+}

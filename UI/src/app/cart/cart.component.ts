@@ -26,25 +26,28 @@ export class CartComponent implements OnInit {
           if (this.products.length > 0) {
             for (let i = 0; i < this.products.length; i++) {
               this.productService.getcarElement(this.products[i].productId).subscribe((cartItem) => {
+                cartItem.data.quantity=this.products[i].quantity
                 this.cartdata.push(cartItem.data); // Add cart element to cartdata              
               });
             }
           }
         }
       });
+
     }        
   }
 
 
   toggleselected(item: any,event:Event) { 
+   
     const checkbox = event.target as HTMLInputElement; 
-    // console.log(checkbox.checked);
     if (checkbox.checked) {
       this.selecteddata.push(item);      
     } else {
       this.selecteddata = this.selecteddata.filter(i => i !== item);
     }
+    this.productService.sharedservice(this.selecteddata);
+    
   }
-
 
 }

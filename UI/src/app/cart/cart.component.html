@@ -5,11 +5,12 @@
       
       <div class="cart-items">
         <ul class="list-group mb-4">
-          <li *ngFor="let item of cartdata; let i = index" class="list-group-item d-flex justify-content-between align-items-center">
-            
+          <li *ngFor="let item of cartdata; let i = index" class="list-group-item d-flex justify-content-between align-items-center"> 
             <!-- Checkbox to select individual items -->
-            <input type="checkbox" [(ngModel)]="item.isSelected" (change)="toggleselected(item,$event)">
-
+            <input 
+            type="checkbox" 
+            [(ngModel)]="item.isSelected" 
+            (change)="toggleselected(item, $event)">  
             <div class="product-info d-flex align-items-center">
               <img [src]="item.ProductImageurl" alt="{{ item.name }}" class="product-image" />
               <div class="product-details">
@@ -29,7 +30,7 @@
       
       <!-- Checkout Summary Section (25%) -->
       <div class="checkout-summary">
-        <app-summery [selectedItems]="selecteddata"></app-summery>
+        <app-summery></app-summery>
       </div>
     </div>
     

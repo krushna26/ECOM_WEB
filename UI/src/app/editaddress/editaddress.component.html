@@ -1,0 +1,16 @@
+<div class="address-form">
+    <label for="Address" class="form-label">Address</label><br />
+    <div class="form-group">
+        <form #changeaddd="ngForm" (ngSubmit)="editaddress(changeaddd.value)">
+      <input type="text" name="add_line1" ngModel placeholder="Enter Address line 1" required class="form-input" /><br />
+      <input type="text" name="add_line2" ngModel placeholder="Enter Address line 2" required class="form-input" /><br />
+      <input type="text" name="country" ngModel placeholder="Country" required class="form-input" /><br />
+      <input type="text" name="state" ngModel placeholder="State" required class="form-input" /><br />
+      <input type="text" name="District" ngModel placeholder="District" required class="form-input" /><br />
+      <input type="text" name="city" ngModel placeholder="City" required class="form-input" /><br />
+      <input type="text" name="pincode" ngModel placeholder="Pincode" required class="form-input" /><br />
+       <button type="submit">Add address </button>
+    </form>
+    </div>
+  </div>
+  

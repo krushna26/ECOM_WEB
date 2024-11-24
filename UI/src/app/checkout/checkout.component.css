@@ -1,0 +1,104 @@
+/* Container for the address section */
+.address-container {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+  padding: 1rem;
+}
+
+/* Section Title */
+.section-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.8rem;
+}
+
+/* Address Item Container */
+.address-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.address-section {
+  font-size: 1rem;
+  color: #333;
+  margin-left: 10px;
+}
+
+/* Radio Button Styling */
+input[type="radio"] {
+  margin-right: 10px;
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+/* Deliver Button Link */
+.deliver {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.deliver-link {
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #007bff;
+  text-decoration: none;
+  border-radius: 4px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.deliver-link:hover {
+  background-color: #0056b3;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.deliver-link:active {
+  background-color: #004494;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transform: translateY(0);
+}
+
+/* Add New Address Link */
+.add-new-address {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.change-address-link {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.change-address-link:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+  .address-container {
+    padding: 0.5rem;
+  }
+
+  .address-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .deliver-link {
+    width: 100%;
+    text-align: center;
+  }
+}
