@@ -42,4 +42,15 @@ exports.forgotpasswordValidator=[
     check('email', 'Enter a valid email')
     .isEmail()
     .normalizeEmail()
-]
+];
+exports.addnewaddressValidator = [
+    check('useraddress.*.add_line1', 'Address Line 1 should not be empty').notEmpty(),
+    check('useraddress.*.add_line2', 'Address Line 2 should not be empty').notEmpty(),
+    check('useraddress.*.country', 'Country should not be empty').notEmpty(),
+    check('useraddress.*.state', 'State should not be empty').notEmpty(),
+    check('useraddress.*.district', 'District should not be empty').notEmpty(),
+    check('useraddress.*.city', 'City should not be empty').notEmpty(),
+    check('useraddress.*.pincode', 'Pincode should be 6 digits long')
+      .isLength({ min: 6, max: 6 })
+      .withMessage('Pincode should be 6 digits'),
+  ];

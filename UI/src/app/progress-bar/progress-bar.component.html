@@ -1,0 +1,7 @@
+<div class="progress-container">
+    <ul class="progress-bar">
+      <li [class.active]="currentStep  >= 1" routerLink="/cart">Shopping</li>
+      <li [class.active]="currentStep >= 2"  routerLink="/checkout">Delivery</li>
+      <li [class.active]="currentStep >= 3" routerLink="/payment">Payment Options</li>
+    </ul>
+  </div>

@@ -1,0 +1,88 @@
+/* Container for the entire progress bar */
+.progress-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  /* Progress bar unordered list */
+  .progress-bar {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 80%;
+  }
+  
+  /* Each list item (step) */
+  .progress-bar li {
+    position: relative;
+    flex: 1;
+    text-align: center;
+    padding: 10px 0;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    font-size: 16px;
+  }
+  
+  /* Indicator line (before the step label) */
+  .progress-bar li::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #ccc; /* Light gray for default line */
+    z-index: -1; /* Behind the text */
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Active state for each step */
+  .progress-bar li.active {
+    color: #3498db; /* Active color */
+  }
+  
+  /* Active indicator line (above the step label) */
+  .progress-bar li.active::before {
+    background-color: #3498db; /* Change to blue when active */
+  }
+  
+  /* Styling for each list item (dot/circle) */
+  .progress-bar li::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: #ccc;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  /* Active dot/circle */
+  .progress-bar li.active::after {
+    background-color: #3498db; /* Blue when active */
+    transform: translate(-50%, -50%) scale(1.2); /* Enlarge dot when active */
+  }
+  
+  /* Hover effect on each step */
+  .progress-bar li:hover {
+    color: #3498db; /* Color change on hover */
+  }
+  
+  /* Adjust the layout when the window is narrow */
+  @media (max-width: 768px) {
+    .progress-bar {
+      flex-direction: column;
+    }
+  
+    .progress-bar li {
+      margin-bottom: 20px;
+    }
+  }
+  

@@ -19,7 +19,10 @@ import { BuyComponent } from './buy/buy.component';
 import { UserprofileComponent } from './userprofile/userprofile.component';
 import { EditprofileComponent } from './editprofile/editprofile.component';
 import { CheckoutComponent } from './checkout/checkout.component';
-import { SummeryComponent } from './summery/summery.component'; // Import HttpClientModule
+import { SummeryComponent } from './summery/summery.component';
+import { PaymentComponent } from './payment/payment.component';
+import { ProgressBarComponent } from './progress-bar/progress-bar.component';
+import { EditaddressComponent } from './editaddress/editaddress.component'; // Import HttpClientModule
 
 @NgModule({
   declarations: [
@@ -38,6 +41,9 @@ import { SummeryComponent } from './summery/summery.component'; // Import HttpCl
     EditprofileComponent,
     CheckoutComponent,
     SummeryComponent,
+    PaymentComponent,
+    ProgressBarComponent,
+    EditaddressComponent,
   ],
   imports: [
     BrowserModule,

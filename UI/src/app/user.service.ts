@@ -18,7 +18,6 @@ export class UserService {
 
   addcartnumber(a:number){
     this.cartSubject.next(a);
-
   }
 
   loginService(logindata: any): Observable<any> {
@@ -74,4 +73,19 @@ export class UserService {
   resetpassword(resetdata1:any){
     return this.http.patch(`${this.apiUrl}/forgot-password`,resetdata1)
   }
+
+  updateuseraddress(newadd: any) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    const userId = this.getdatafromToken().id;
+    const url = `${this.apiUrl}/addnewaddress/${userId}`;
+     this.http.patch(url, newadd, { headers }).subscribe((res=>{
+      console.log("RES",res);
+      
+
+    }))
+  }
+  
+  
 }

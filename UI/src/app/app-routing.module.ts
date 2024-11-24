@@ -11,6 +11,8 @@ import { BuyComponent } from './buy/buy.component';
 import { UserprofileComponent } from './userprofile/userprofile.component';
 import { EditprofileComponent } from './editprofile/editprofile.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { PaymentComponent } from './payment/payment.component';
+import { EditaddressComponent } from './editaddress/editaddress.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -23,6 +25,8 @@ const routes: Routes = [
   { path: 'edit-profile/:id',component: EditprofileComponent,},
   { path: 'userdetails/:id', component: UserprofileComponent },
   {path:'checkout',component:CheckoutComponent},
+  {path:'payment',component:PaymentComponent},
+  {path:'editaddress',component:EditaddressComponent},
   { path: '**', component: NoPageComponentComponent },
 ];
 

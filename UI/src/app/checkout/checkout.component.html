@@ -1,1 +1,50 @@
-<p>checkout works!</p>
+<app-progress-bar></app-progress-bar>
+
+<h2 class="section-title">Delivery Address</h2>
+
+<div class="address-container">
+  <div class="address-item" *ngFor="let address of addresses">
+    <input 
+      type="radio" 
+      name="selectedAddress" 
+      id="address1" 
+      [(ngModel)]="selectedAddress" 
+      [value]="{address}" 
+    />
+    <label for="address1">
+      <p class="address-section">
+        {{ address || 'No address provided yet' }}
+      </p>
+    </label>
+  </div>
+
+  <!-- <div class="address-item">
+    <input 
+      type="radio" 
+      name="selectedAddress" 
+      id="address2" 
+      [(ngModel)]="selectedAddress" 
+      [value]="address2" 
+    />
+    <label for="address2">
+      <p class="address-section">
+        {{ address2 || 'No address provided yet' }}
+      </p>
+    </label>
+  </div> -->
+
+  <span class="deliver">
+    <a 
+      routerLink="/payment" 
+      class="deliver-link" 
+      [class.disabled]="!selectedAddress" 
+      [attr.disabled]="!selectedAddress ? true : null"
+    >
+      Deliver Here
+    </a>
+  </span>
+
+  <div class="add-new-address">
+    <a routerLink="/editaddress" class="change-address-link">Add New Address →</a>
+  </div>
+</div>

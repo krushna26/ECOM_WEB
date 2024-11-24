@@ -1,10 +1,11 @@
-    const { type } = require('express/lib/response');
+    // const { type } = require('express/lib/response');
 const mongoose=require('mongoose')
     const userSchema=new mongoose.Schema({
         username:String,
         email:String,
         password:String,
         useraddress:[
+            [
             add_line1={
                 type:String
             },
@@ -26,6 +27,7 @@ const mongoose=require('mongoose')
             pincode={
                 type:Number
             }
+        ]
         ],
         cartitems:[
         {

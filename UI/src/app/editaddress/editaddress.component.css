@@ -1,0 +1,73 @@
+/* General Styling for the Form */
+.address-form {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px 30px;
+    border: 2px solid #007bff;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Label Styling */
+  .form-label {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    display: block;
+    text-align: center;
+    color: #007bff;
+    text-transform: uppercase;
+  }
+  
+  /* Input Field Styling */
+  .form-input {
+    display: block;
+    width: calc(100% - 20px); /* Ensure proper padding */
+    padding: 10px;
+    margin: 10px auto;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #fff;
+    transition: border-color 0.3s ease-in-out;
+  }
+  
+  /* Input Hover and Focus Effects */
+  .form-input:focus {
+    border-color: #007bff;
+    box-shadow: none; /* No visible outline or shadow */
+  }
+  
+  /* Remove Native Outline */
+  .form-input:focus-visible {
+    outline: none;
+  }
+  
+  /* Button Styling */
+  .form-button {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    text-transform: uppercase;
+  }
+  
+  .form-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Form Group */
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  

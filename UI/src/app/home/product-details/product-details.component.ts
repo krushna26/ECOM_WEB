@@ -75,8 +75,6 @@ export class ProductDetailsComponent implements OnInit {
     }
 
     this.userdatafromtoken = this.userService.getdatafromToken();
-    console.log(this.userdatafromtoken);
-    
     if (this.userdatafromtoken == null) {
       alert('Need to login');
       this.router.navigate(['/login']);
@@ -86,21 +84,15 @@ export class ProductDetailsComponent implements OnInit {
         productId: this.product._id,
         quantity: this.qt,
       };
-    this.userService.addcartnumber(this.qt)
-      // console.log("Datafrom the Token and userid added to hthis",cartItem);
+      this.userService.addcartnumber(this.qt);
       this.userService.UpdateItemtoCart(cartItem).subscribe(
         (res: any) => {
-          this.router.navigate(['/cart'])
-
-
+          this.router.navigate(['/cart']);
         },
         (error) => {
           alert(error.error.msg);
-
         }
       );
-
-     
     }
   }
 
