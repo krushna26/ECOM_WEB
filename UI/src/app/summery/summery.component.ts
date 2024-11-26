@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import { Router } from '@angular/router';
+import { OrderService } from '../order.service';
 
 @Component({
   selector: 'app-summery',
@@ -12,10 +13,10 @@ export class SummeryComponent implements OnInit {
   total_amount: number = 0;
   selcteddata:any[]=[];
 
-  constructor(private productservice: ProductService,private router:Router) {}
+  constructor(private productservice: ProductService,private orderService:OrderService, private router:Router) {}
 
   ngOnInit(): void {
-    this.productservice.checkedsubscribe.subscribe((res: any) => {
+    this.orderService.checkedsubscribe.subscribe((res: any) => {
       this.selcteddata=res;
       let a = 0;
       let b = 0;

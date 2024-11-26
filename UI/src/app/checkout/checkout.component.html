@@ -1,37 +1,24 @@
-<app-progress-bar></app-progress-bar>
+<!-- <app-progress-bar></app-progress-bar> -->
 
 <h2 class="section-title">Delivery Address</h2>
 
-<div class="address-container">
-  <div class="address-item" *ngFor="let address of addresses">
+<div class="address-container" *ngIf="addresses.length>0" >
+  <div class="address-item" *ngFor="let option of addresses; let i=index">
     <input 
-      type="radio" 
-      name="selectedAddress" 
-      id="address1" 
-      [(ngModel)]="selectedAddress" 
-      [value]="{address}" 
+
+    type="radio" 
+    name="options" 
+    [value]="option" 
+    [(ngModel)]="selectedAddress"
+    [checked]="i === 0"
+    (change)="onSelectionChange(option)"
     />
     <label for="address1">
       <p class="address-section">
-        {{ address || 'No address provided yet' }}
+        {{ option }}
       </p>
     </label>
   </div>
-
-  <!-- <div class="address-item">
-    <input 
-      type="radio" 
-      name="selectedAddress" 
-      id="address2" 
-      [(ngModel)]="selectedAddress" 
-      [value]="address2" 
-    />
-    <label for="address2">
-      <p class="address-section">
-        {{ address2 || 'No address provided yet' }}
-      </p>
-    </label>
-  </div> -->
 
   <span class="deliver">
     <a 
@@ -44,7 +31,7 @@
     </a>
   </span>
 
-  <div class="add-new-address">
-    <a routerLink="/editaddress" class="change-address-link">Add New Address →</a>
-  </div>
+</div>
+<div class="add-new-address">
+  <a routerLink="/editaddress" class="change-address-link">Add New Address →</a>
 </div>
