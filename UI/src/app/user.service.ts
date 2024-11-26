@@ -53,13 +53,12 @@ export class UserService {
       .pipe(catchError(this.handleError));
   }
 
-  // Check if user is authenticated based on token presence
+
   isAuthenticated(): boolean {
     const token = localStorage.getItem('token');
     return token !== null;
   }
 
-  // Handle errors from HTTP requests
   private handleError(error: any): Observable<never> {
     console.error('An error occurred:', error);
     return throwError(error);

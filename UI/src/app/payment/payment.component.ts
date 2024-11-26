@@ -6,12 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent implements OnInit {
-
+  paymentoptions=["UPI","Card","Cash on Delivery"];
+  selectedpaymentoption:String='';
   constructor() { }
 
   ngOnInit(): void {
-  }
-  processPayment(a:any){
+
     
   }
+  onSelectionChange(option:string){
+    console.log(this.selectedpaymentoption);
+    
+    this.selectedpaymentoption=option;
+  }
+ 
 }

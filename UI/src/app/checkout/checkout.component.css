@@ -1,104 +1,107 @@
-/* Container for the address section */
-.address-container {
-  display: flex;
-  flex-direction: column;
-  margin: 1rem 0;
-  padding: 1rem;
-}
-
-/* Section Title */
+/* General Styling */
 .section-title {
   font-size: 1.5rem;
   font-weight: bold;
-  margin-bottom: 0.8rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #333;
 }
 
-/* Address Item Container */
+.address-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  max-width: 600px;
+  margin: 1rem auto;
+}
+
 .address-item {
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
-  padding: 1rem;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  gap: 1rem;
+}
+
+.address-item input[type="radio"] {
+  accent-color: #007bff; /* Change to your brand color */
+  transform: scale(1.2); /* Slightly enlarge the radio buttons */
+  cursor: pointer;
+}
+
+.address-item label {
+  flex-grow: 1;
+  cursor: pointer;
 }
 
 .address-section {
+  margin: 0;
   font-size: 1rem;
-  color: #333;
-  margin-left: 10px;
+  color: #555;
 }
 
-/* Radio Button Styling */
-input[type="radio"] {
-  margin-right: 10px;
-  cursor: pointer;
-  transform: scale(1.2);
-}
-
-/* Deliver Button Link */
 .deliver {
-  display: flex;
-  justify-content: center;
-  margin-top: 1rem;
-}
-
-.deliver-link {
-  padding: 12px 24px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #fff;
-  background-color: #007bff;
-  text-decoration: none;
-  border-radius: 4px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
-  cursor: pointer;
-}
-
-.deliver-link:hover {
-  background-color: #0056b3;
-  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
-  transform: translateY(-2px);
-}
-
-.deliver-link:active {
-  background-color: #004494;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  transform: translateY(0);
-}
-
-/* Add New Address Link */
-.add-new-address {
   text-align: center;
   margin-top: 1rem;
 }
 
+.deliver-link {
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.deliver-link:hover {
+  background-color: #0056b3;
+}
+
+.deliver-link.disabled {
+  background-color: #ddd;
+  color: #999;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+/* Add New Address Styling */
+.add-new-address {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
 .change-address-link {
+  font-size: 1rem;
   color: #007bff;
   text-decoration: none;
-  font-size: 1rem;
-  font-weight: 600;
+  transition: color 0.3s ease;
 }
 
 .change-address-link:hover {
-  text-decoration: underline;
+  color: #0056b3;
 }
 
-/* Responsive Design for Smaller Screens */
+/* Responsive Design */
 @media (max-width: 768px) {
   .address-container {
     padding: 0.5rem;
   }
 
-  .address-item {
-    flex-direction: column;
-    align-items: flex-start;
+  .section-title {
+    font-size: 1.25rem;
   }
 
   .deliver-link {
-    width: 100%;
-    text-align: center;
+    font-size: 0.9rem;
+    padding: 0.4rem 1rem;
+  }
+
+  .change-address-link {
+    font-size: 0.9rem;
   }
 }
