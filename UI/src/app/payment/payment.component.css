@@ -1,0 +1,121 @@
+/* General container styling */
+div {
+  font-family: 'Arial', sans-serif;
+  margin: 20px;
+}
+
+/* Section headings */
+h2 {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+h4 {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+/* Payment option container */
+.address-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+
+/* Remove last border */
+.address-item:last-child {
+  border-bottom: none;
+}
+
+/* Radio button styling */
+input[type="radio"] {
+  margin-right: 10px;
+  width: 18px;
+  height: 18px;
+}
+
+/* Label text styling */
+.address-section {
+  font-size: 16px;
+  color: #444;
+  margin: 0;
+}
+
+/* Highlight the selected payment option */
+input[type="radio"]:checked + label .address-section {
+  font-weight: bold;
+  color: #007bff;
+}
+
+/* Description styling */
+div > p {
+  font-size: 14px;
+  color: #555;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+/* Form input fields */
+form input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Submit button styling */
+button[type="submit"],
+button {
+  padding: 12px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* Button hover effect */
+button[type="submit"]:hover,
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  h2 {
+    font-size: 20px;
+  }
+
+  h4 {
+    font-size: 16px;
+  }
+
+  .address-section {
+    font-size: 14px;
+  }
+
+  div > p {
+    font-size: 12px;
+  }
+
+  form input[type="text"] {
+    font-size: 14px;
+  }
+
+  button[type="submit"],
+  button {
+    font-size: 14px;
+  }
+}

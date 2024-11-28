@@ -1,23 +1,92 @@
-<h2>Payment</h2>
-
 <div>
-    <h4>Payment Option</h4>
-    <div class="address-item" *ngFor="let option of paymentoptions; let i=index" >
-        <input 
-        type="radio" 
-        name="options" 
-        [value]="option" 
-        [(ngModel)]="selectedpaymentoption"
-        [checked]="selectedpaymentoption === option"
-        (change)="onSelectionChange(option)"
-        />
-        <label for="address1">
-          <p class="address-section" >
-            {{ option }}
-          </p>
-        </label>
-      </div>
-    
+  <h4>Payment Option</h4>
+  <div
+    class="address-item"
+    *ngFor="let option of paymentoptions; let i = index"
+  >
+    <input
+      type="radio"
+      name="options"
+      [value]="option"
+      [(ngModel)]="selectedpaymentoption"
+      [checked]="selectedpaymentoption === option"
+      (change)="onSelectionChange(option)"
+    />
+    <label for="address1">
+      <p class="address-section">
+        {{ option }}
+      </p>
+    </label>
+  </div>
 
-    
+  <div *ngIf="selectedpaymentoption === paymentoptions[0]">
+    <p>UPI Payment</p>
+    <form #upinumber="ngForm" (ngSubmit)="upi_payment(upinumber.value)">
+      <label for="upi_Id">Enter UPI ID</label>
+      <input
+      ngModel
+        type="text"
+        name="upi_Id"
+        [(ngModel)]="upiId"
+        placeholder="9823XXXXXX@ybl"
+        required
+      />
+      <button type="submit">Pay</button>
+    </form>
+  </div>
+  <div *ngIf="selectedpaymentoption === paymentoptions[1]">
+    <p>Card Payment</p>
+    <form #card="ngForm" (ngSubmit)="card_payment(card.value)">
+      <label for="">
+        <input
+          type="radio"
+          value="Credit Card"
+          name="card_type"
+          [(ngModel)]="selectedOption"
+          id="Creditcard"
+        />
+        Credit Card
+      </label>
+
+      <label for="">
+        <input
+          type="radio"
+          name="card_type"
+          [(ngModel)]="selectedOption"
+          value="Debit Card"
+          id="Debitcard"
+        />
+        Debit Card
+      </label>
+
+      <br /><br />
+
+      <label for="cardnumuber">Enter card Number</label>
+      <input
+        type="text"
+        name="cardnumuber"
+        placeholder="65XXXXXXXXXX"
+        ngModel
+        required
+      />
+
+      <label for="cardnumuber">Enter User Name</label>
+      <input
+        type="text"
+        name="user name"
+        ngModel
+        required
+      />
+
+      <label for="upi_Id">Date of Expiry</label>
+      <input type="text" name="DOE" ngModel placeholder="MM/YYYY" required />
+
+      <label for="upi_Id">CVV</label>
+      <input type="text" name="CVV" ngModel placeholder="CVV" required />
+      <button type="submit">Pay</button>
+    </form>
+  </div>
+  <div *ngIf="selectedpaymentoption === paymentoptions[2]">
+    <button>place order</button>
+  </div>
 </div>
