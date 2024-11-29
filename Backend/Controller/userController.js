@@ -232,6 +232,12 @@ const addnewaddress = async (req, res) => {
 };
 
 
+const order=async(req,res)=>{
+  
+
+}
+
+
 
 module.exports = {
   Register,
@@ -240,5 +246,6 @@ module.exports = {
   cartupdate,
   forgotpassword,
   addnewaddress,
+  order
 
 };

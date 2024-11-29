@@ -1,5 +1,17 @@
+<div class="paymentBreakup">
+  <h3>payment Breakup</h3>
+  <div class="payment" v>Total Items:{{quantity}}
+  </div>
+  <div class="payment">SGST:{{SGST_Price}}</div>
+  <div class="payment">CGST:{{CGST_Price}}</div>
+  <div class="payment">Delivery Charges:{{delivery_charges}}</div>
+  <div class="payment">Total amount:{{total_amount}}</div>
+  
+  
+  </div>
 <div>
   <h4>Payment Option</h4>
+  <div >
   <div
     class="address-item"
     *ngFor="let option of paymentoptions; let i = index"
@@ -19,6 +31,9 @@
     </label>
   </div>
 
+  </div>
+
+
   <div *ngIf="selectedpaymentoption === paymentoptions[0]">
     <p>UPI Payment</p>
     <form #upinumber="ngForm" (ngSubmit)="upi_payment(upinumber.value)">
@@ -34,6 +49,9 @@
       <button type="submit">Pay</button>
     </form>
   </div>
+
+
+
   <div *ngIf="selectedpaymentoption === paymentoptions[1]">
     <p>Card Payment</p>
     <form #card="ngForm" (ngSubmit)="card_payment(card.value)">
@@ -87,6 +105,10 @@
     </form>
   </div>
   <div *ngIf="selectedpaymentoption === paymentoptions[2]">
-    <button>place order</button>
+    <button (click)="cashondelivery()">place order</button>
   </div>
 </div>
+
+
+
+

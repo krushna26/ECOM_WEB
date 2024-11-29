@@ -12,6 +12,8 @@ export class SummeryComponent implements OnInit {
   quantity: number = 0;
   total_amount: number = 0;
   selcteddata:any[]=[];
+  SGST_Price: number=0;
+  CGST_Price: number=0;
 
   constructor(private productservice: ProductService,private orderService:OrderService, private router:Router) {}
 
@@ -27,7 +29,9 @@ export class SummeryComponent implements OnInit {
       }
       this.quantity = a;
       this.total_amount = b;
+
     });
+    
   }
   navigatetocheckout(s:any[]){
     this.router.navigate(["/checkout"])
