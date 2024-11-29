@@ -68,9 +68,6 @@ email1: any|string;
         pincode,
       ],
     };
-
-    console.log('signupdata', signupdata);
-
     this.userService.signupservice(signupdata).subscribe(
       (res) => {
         this.issignedup = true;

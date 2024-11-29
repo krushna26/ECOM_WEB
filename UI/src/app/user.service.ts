@@ -79,9 +79,7 @@ export class UserService {
     });
     const userId = this.getdatafromToken().id;
     const url = `${this.apiUrl}/addnewaddress/${userId}`;
-     this.http.patch(url, newadd, { headers }).subscribe((res=>{
-      console.log("RES",res);
-      
+     this.http.patch(url, newadd, { headers }).subscribe((res=>{     
 
     }))
   }

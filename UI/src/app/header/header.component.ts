@@ -53,7 +53,6 @@ export class HeaderComponent implements OnInit {
             const cartdata=res.data.cartitems;
             let m=0;
             for (let i=0;i<cartdata.length;i++){
-              // console.log(cartdata[0]);
               
               this.cartnumber+=cartdata[i].quantity
             }  

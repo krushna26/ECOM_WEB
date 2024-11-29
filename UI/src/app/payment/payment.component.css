@@ -92,30 +92,98 @@ button:hover {
   background-color: #0056b3;
 }
 
+/* Layout styling for Payment Option and Payment Breakup */
+.payment-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.payment-option {
+  flex: 1 1 60%;
+  padding: 10px;
+}
+
+.paymentBreakup {
+  flex: 1 1 35%;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+/* Payment Breakup section styles */
+.paymentBreakup h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.paymentBreakup .payment {
+  font-size: 16px;
+  margin: 5px 0;
+  color: #555;
+}
+
 /* Mobile responsiveness */
 @media (max-width: 768px) {
-  h2 {
-    font-size: 20px;
+  .payment-container {
+    flex-direction: column;
   }
 
-  h4 {
-    font-size: 16px;
-  }
-
-  .address-section {
-    font-size: 14px;
-  }
-
-  div > p {
-    font-size: 12px;
-  }
-
-  form input[type="text"] {
-    font-size: 14px;
-  }
-
-  button[type="submit"],
-  button {
-    font-size: 14px;
+  .payment-option, .paymentBreakup {
+    flex: 1 1 100%;
   }
 }
+
+
+/* Layout styling for Payment Breakup and Payment Option */
+.payment-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+/* Payment Breakup section on the left */
+.paymentBreakup {
+  flex: 0 0 35%; /* Take 35% of the width */
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  order: 1; /* Ensure this comes first */
+}
+
+/* Payment Option section on the right */
+.payment-option {
+  flex: 1 1 60%; /* Take 60% of the width */
+  padding: 10px;
+  order: 2; /* Ensure this comes second */
+}
+
+/* Payment Breakup section styles */
+.paymentBreakup h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.paymentBreakup .payment {
+  font-size: 16px;
+  margin: 5px 0;
+  color: #555;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .payment-container {
+    flex-direction: column;
+  }
+
+  .paymentBreakup, .payment-option {
+    flex: 1 1 100%; /* Take full width */
+    order: initial; /* Default stacking order */
+  }
+}
+
